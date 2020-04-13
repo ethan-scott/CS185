@@ -1,16 +1,40 @@
-h1{
-    color: red;
-    font-size: 3em;
-}
 h2{
-    color: blue;
+    display: block;
     font-size: 2em;
-}
-p{
-    color: blue;
 }
 img{
     border: 1px solid #000000;
     height: 100 px;
     width: 100 px;
+}
+
+#nav {
+    background-color: #333333;
+    width: 100%;
+}
+
+u1 {
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    background-color: #333333
+}
+
+li a{
+    float: left;
+    color:white;
+    text-decoration: none;
+}
+
+a {
+    display: block;
+    padding: 10px;
+    background-color: #333333;
+}
+
+li a:hover {
+    background-color: black;
 }
