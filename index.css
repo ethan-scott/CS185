@@ -1,11 +1,16 @@
 h2{
     display: block;
-    font-size: 2em;
 }
-img{
-    border: 1px solid #000000;
-    height: 100 px;
-    width: 100 px;
+
+h3{
+    display: block;
+    padding: 0px;
+    margin: 10px;
+}
+
+p{
+    margin-left: 10px;
+    margin-right: 100px;
 }
 
 #nav {
@@ -13,10 +18,26 @@ img{
     width: 100%;
 }
 
+#project{
+    margin: 10px;
+    margin-bottom: 30px;
+}
 #project img{
     border: none;
-    height: 70px;
-    width: 90px;
+    height: 50px;
+    width: 68px;
+}
+
+#project a{
+    display: flex;
+    align-items: center;
+    font-size: 1.25em;
+    text-decoration: none;
+    color: blue;
+}
+
+#project p{
+    margin-left: 74px;
 }
 
 u1 {
