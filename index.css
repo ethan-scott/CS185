@@ -63,25 +63,16 @@ li a:hover {
     background-color: black;
 }
 
-.row{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-content: flex-end;
-    align-items: center;
-    justify-content: center;
-    padding: 0 4px;
+.container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+    padding: 5 px;
 }
 
-.column{
-    flex: 30%;
-    padding: 0 4px;
-}
-
-.column img{
-    border: none;
-    margin-top: 8px;
+.container img, video{
+    border: 10px solid white;
     max-height: 100%;
     max-width: 100%;
     vertical-align: middle;
+    margin: auto;
 }
