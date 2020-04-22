@@ -15,18 +15,53 @@
             </u1>
         </div>
         <br>
-        <h3> Summer 2019, Images </h3>
-        <div class="container">
-                <img src="river.jpg">
-                <img src="whitney.jpg">
-                <img src="rocks.jpg">
-                <img src="lake.jpg">
-                <img src="sunset.jpg">
-                <img src="trees.jpg">
-                <img src="canyon.jpg">
-                <img src="mountain.jpg">
-                <img src="tent.jpg">
+        <h3 id="imgTitle"> Summer 2019, Images </h3>
+        <div id="pictureGrid" class="container">
+                <img id="river" src="river.jpg">
+                <img id="whitney" src="whitney.jpg">
+                <img id="rocks" src="rocks.jpg">
+                <img id="lake" src="lake.jpg">
+                <img id="sunset" src="sunset.jpg">
+                <img id="trees" src="trees.jpg">
+                <img id="canyon" src="canyon.jpg">
+                <img id="mountain" src="mountain.jpg">
+                <img id="tent" src="tent.jpg">
         </div>
+        <div id="LightBox" class="LBox">
+            <img id="LBimg">
+        </div>
+        <script>
+            images = document.getElementsByTagName("img")
+            for(var i = 0; i < images.length; i++){
+                images[i].addEventListener("click", openLightBox);
+            }
+            LB = document.getElementById("LightBox")
+            LBimage = document.getElementById("LBimg");
+            LB.addEventListener("click", e => closeLightBox(e));
+
+            function openLightBox(){
+                var strlist = this.src.split("/");
+                var str = strlist[strlist.length - 1];
+                console.log(str)
+                var lightBox = document.getElementById("LightBox");
+                var grid = document.getElementById("pictureGrid");
+                var title = document.getElementById("imgTitle");
+
+                lightBox.style.display = "flex";
+                document.getElementById("LBimg").src = str;
+                grid.style.display = "none";
+                //title.style.display = "none";
+            }
+
+            function closeLightBox(e){
+                if(e.target.id != "LBimg"){
+                    var lightBox = document.getElementById("LightBox");
+                    var grid = document.getElementById("pictureGrid")
+                    grid.style.display = "grid";
+                    lightBox.style.display = "none";
+                } 
+            }
+        </script>
     </body>
 
 </html>
