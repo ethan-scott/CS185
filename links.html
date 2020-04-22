@@ -15,6 +15,7 @@
             </u1>
         </div>
         <br>
+        <button id="scrollTop" title="Go to top">Top</button>
         <h3>External Links</h3>
         <br>
         <div id="project">
@@ -26,5 +27,24 @@
         <div id="project">
             <a href=https://engineering.ucsb.edu/><img src="ucsb.jpg">   UCSB College of Engineering</a>
         </div>
+        <script>
+            window.onscroll = function() {scrollFunction()};
+            scrollButton = document.getElementById("scrollTop");
+            scrollButton.addEventListener("click", goToTop);
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    scrollTop.style.display = "block";
+                } else {
+                    scrollTop.style.display = "none";
+                }
+            }
+
+            function goToTop(){
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+                window.scrollTo(0,0);
+            }
+        </script>
     </body>
 </html>
