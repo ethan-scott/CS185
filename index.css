@@ -87,7 +87,7 @@ li a:hover {
     height: 100%;
 }
 
-.LBox img{
+.LBox img, video{
     max-height: 65%;
     max-width: 65%;
 }
