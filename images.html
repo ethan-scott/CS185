@@ -9,31 +9,79 @@
         <div id="nav">
             <u1>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="images.html">Images</a></li>
+                <li><a class="current" href="images.html">Images</a></li>
                 <li><a href="videos.html">Videos</a></li>
                 <li><a href="links.html">Links</a></li>
             </u1>
         </div>
         <br>
-        <h3> Summer 2019 </h3>
-        <div class="row">
-            <div class="column">
-                <img src="river.jpg">
-                <img src="whitney.jpg">
-                <img src="rocks.jpg">
-            </div>
-            <div class="column">
-                <img src="lake.jpg">
-                <img src="sunset.jpg">
-                <img src="trees.jpg">
-            </div>
-            <div class="column">
-                <img src="canyon.jpg">
-                <img src="mountain.jpg">
-                <img src="tent.jpg">
-
-            </div>
+        <button id="scrollTop" title="Go to top">Top</button>
+        <h3 id="imgTitle"> Summer 2019, Images </h3>
+        <div id="pictureGrid" class="container">
+                <img id="river" src="river.jpg">
+                <img id="whitney" src="whitney.jpg">
+                <img id="rocks" src="rocks.jpg">
+                <img id="lake" src="lake.jpg">
+                <img id="sunset" src="sunset.jpg">
+                <img id="trees" src="trees.jpg">
+                <img id="canyon" src="canyon.jpg">
+                <img id="mountain" src="mountain.jpg">
+                <img id="tent" src="tent.jpg">
         </div>
+        <div id="LightBox" class="LBox">
+            <img id="LBimg">
+        </div>
+        <script>
+            images = document.getElementsByTagName("img")
+            for(var i = 0; i < images.length; i++){
+                images[i].addEventListener("click", openLightBox);
+            }
+            LB = document.getElementById("LightBox");
+            LBimage = document.getElementById("LBimg");
+            LB.addEventListener("click", e => closeLightBox(e));
+
+            window.onscroll = function() {scrollFunction()};
+            scrollButton = document.getElementById("scrollTop");
+            scrollButton.addEventListener("click", goToTop);
+
+
+            function openLightBox(){
+                var strlist = this.src.split("/");
+                var str = strlist[strlist.length - 1];
+                console.log(str)
+                var lightBox = document.getElementById("LightBox");
+                var grid = document.getElementById("pictureGrid");
+                var title = document.getElementById("imgTitle");
+
+                lightBox.style.display = "flex";
+                document.getElementById("LBimg").src = str;
+                grid.style.display = "none";
+                //title.style.display = "none";
+            }
+
+            function closeLightBox(e){
+                if(e.target.id != "LBimg"){
+                    var lightBox = document.getElementById("LightBox");
+                    var grid = document.getElementById("pictureGrid")
+                    grid.style.display = "grid";
+                    lightBox.style.display = "none";
+                } 
+            }
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    scrollTop.style.display = "block";
+                } else {
+                    scrollTop.style.display = "none";
+                }
+            }
+
+            function goToTop(){
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+                window.scrollTo(0,0);
+            }
+        </script>
     </body>
 
 </html>

@@ -10,19 +10,88 @@
             <u1>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="images.html">Images</a></li>
-                <li><a href="videos.html">Videos</a></li>
+                <li><a class="current" href="videos.html">Videos</a></li>
                 <li><a href="links.html">Links</a></li>
             </u1>
         </div>
         <br>
-        <video width="320" height="240" controls>
-            <source src=vid1.mp4 type="video/MP4">
-        </video>
-        <h3> Iceland, 2019 </h3>
-        <br>
-        <video width="320" height="240" controls>
-            <source src=vid3.mp4 type="video/MP4">
-        </video>
-        <h3> John Muir Trail, 2019 </h3>
+        <button id="scrollTop" title="Go to top">Top</button>
+        <h3> Summer 2019, Videos </h3>
+        <div id="videoGrid" class="container">
+            <video width="320" height="240" controls>
+                <source src=vid1.mp4 type="video/MP4">
+            </video>
+            <video width="320" height="240" controls>
+                <source src=vid3.mp4 type="video/MP4">
+            </video>
+        </div>
+        <div id="LightBox1" class="LBox">
+            <video id="LBvid1" width="500" height = "380" controls>
+                <source src=vid1.mp4 type="video/MP4">
+            </video>        
+        </div>
+        <div id="LightBox3" class="LBox">
+            <video id="LBvid3" width="500" height = "380" controls>
+                <source src=vid3.mp4 type="video/MP4">
+            </video>        
+        </div>
+        <script>
+            videos = document.getElementsByTagName("video")
+            for(var i = 0; i < videos.length; i++){
+                videos[i].addEventListener("click", e => openLightBox(e));
+            }
+            LB1 = document.getElementById("LightBox1");
+            LB3 = document.getElementById("LightBox3");
+            LBvideo = document.getElementById("LBvid");
+            LB1.addEventListener("click", e => closeLightBox(e));
+            LB3.addEventListener("click", e => closeLightBox(e));
+
+            window.onscroll = function() {scrollFunction()};
+            scrollButton = document.getElementById("scrollTop");
+            scrollButton.addEventListener("click", goToTop);
+
+            function openLightBox(e){
+                source = e.target.querySelector("source").src;
+                var strlist = this.source.split("/");
+                var str = strlist[strlist.length - 1];
+                console.log(str)
+                if(str=="vid1.mp4"){
+                    var lightBox = document.getElementById("LightBox1");
+                }else{
+                    var lightBox = document.getElementById("LightBox3");
+                }
+                var grid = document.getElementById("videoGrid");
+
+                lightBox.style.display = "flex";
+
+                grid.style.display = "none";
+                //title.style.display = "none";
+            }
+
+            function closeLightBox(e){
+                console.log("what");
+                if(e.target.id != "LBvid1" && e.target.id !="LBvid3"){
+                    var lightBox1 = document.getElementById("LightBox1");
+                    var lightBox3 = document.getElementById("LightBox3");
+                    var grid = document.getElementById("videoGrid");
+                    grid.style.display = "grid";
+                    lightBox1.style.display = "none";
+                    lightBox3.style.display = "none";
+                } 
+            }
+            function scrollFunction() {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    scrollTop.style.display = "block";
+                } else {
+                    scrollTop.style.display = "none";
+                }
+            }
+
+            function goToTop(){
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+                window.scrollTo(0,0);
+            }
+        </script>
     </body>
 </html>
